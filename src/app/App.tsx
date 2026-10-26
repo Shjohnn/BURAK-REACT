@@ -3,16 +3,17 @@ import React from "react";
 // import {Box,Button,Container, Stack, Typography} from "@mui/material";
 // import { RippleBadge } from "./MaterialTheme/styled";
 import { Route ,Link , Switch, useLocation} from "react-router-dom";
-import { Home } from "./screens/homePage";
-import { UserPage } from "./screens/userPage";
-import { ProductsPage } from "./screens/productsPage";
-import { OrdersPage } from "./screens/ordersPage";
-import { HomeNavbar } from "./components/headers/HomeNavbar";
-import { OtherNavbar } from "./components/headers/OtherNavbar";
-import { Footer } from "./components/footer"; //@ts-ignore
+import  Homepage  from "./screens/homePage";
+import  UserPage from "./screens/userPage";
+import  ProductsPage  from "./screens/productsPage";
+import  OrdersPage  from "./screens/ordersPage";
+import HomeNavbar  from "./components/headers/HomeNavbar";
+import  OtherNavbar from "./components/headers/OtherNavbar";//@ts-ignore
+import Footer  from "./components/footer"; //@ts-ignore
 import "../css/app.css";//@ts-ignore
-import "../css/navbar.css"
-import { HelpPage } from "./screens/helpPage";
+import "../css/navbar.css";//@ts-ignore
+import "../css/footer.css";
+import  HelpPage from "./screens/helpPage";
 
 function App() {
 const location = useLocation();
@@ -35,7 +36,7 @@ const location = useLocation();
           <HelpPage/>
         </Route>
         <Route path ="/">
-          <Home />
+          <Homepage/>
         </Route>
       </Switch>
       <Footer/>

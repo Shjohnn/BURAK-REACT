@@ -11,7 +11,7 @@ import "./css/index.css";
 import { BrowserRouter as Router } from "react-router-dom";
 
   
-const container = document.getElementById("root"); //@ts-ignore
+const container = document.getElementById("root"); //@ts-ignore 
 const root=createRoot(container);
  
 
