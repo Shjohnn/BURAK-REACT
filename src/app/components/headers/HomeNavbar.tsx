@@ -7,7 +7,8 @@ export  default function HomeNavbar() {
   const authMember = null;
 
 
-  const [count, setCount] = useState<number>(0);
+  const [count, setCount] = useState<number>(0); //hotira, render bolganda 
+  console.log("render");
   const [value, setValue] = useState<boolean>(true);
 
 //Handlers 
