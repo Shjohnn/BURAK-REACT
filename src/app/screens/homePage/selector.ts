@@ -4,7 +4,8 @@ import { AppRootState } from "../../../lib/types/screen";
 const selectHomePage = (state: AppRootState) => state.homePage;
 
 export const retrievePopularDishes = createSelector(
-  selectHomePage,
+  selectHomePage, //initial state ni olish uchun 
+                    // selectHomePage selectorini ishlatamiz
   (homePage) => homePage.popularDishes
 );
 

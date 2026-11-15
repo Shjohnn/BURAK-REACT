@@ -4,8 +4,9 @@ import { HomePageState } from '../../../lib/types/screen';
 const initialState: HomePageState = {
     popularDishes: [],
     newDishes: [],
-    topUsers: [],
-};
+    topUsers: [],      //shu 3 tasi state ni boshlangi qiymati 
+};  //dastur ishga tushganda 3 ta royhat bo'sh bo'lishi kerak, 
+// shuning uchun initial state ni bo'sh array qilib oldik.
 
 const homePageSlice = createSlice({
     name: 'homePage', //
