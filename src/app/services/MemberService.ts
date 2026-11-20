@@ -60,6 +60,18 @@ class MemberService {
         }
     }
 
+       public async logout(): Promise<void> {
+        try {
+            const url = this.path + "/member/logout";
+            const result = await axios.post(url, {},{withCredentials:true});
+            localStorage.removeItem("memberData");
+            return result.data.logout;
+        } catch (err) {
+            console.error("Error on logout", err);
+            throw err;
+        }
+    }
+
 
 
 
