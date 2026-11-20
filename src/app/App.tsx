@@ -8,6 +8,7 @@ import  UserPage from "./screens/userPage";
 import  ProductsPage  from "./screens/productsPage";
 import  OrdersPage  from "./screens/ordersPage";
 import HomeNavbar  from "./components/headers/HomeNavbar";
+import AuthenticationModal from "./components/auth";
 import  OtherNavbar from "./components/headers/OtherNavbar";//@ts-ignore
 import Footer  from "./components/footer"; //@ts-ignore
 import "../css/app.css";//@ts-ignore
@@ -19,6 +20,14 @@ import useBasket from "./hooks/useBasket";
 function App() {
 const location = useLocation();
 const {cartItems, onAdd, onRemove, onDelete, onDeleteAll} = useBasket();
+const [signupOpen, setSignupOpen] = useState<boolean>(true);
+const [loginOpen, setLoginOpen] = useState<boolean>(false);
+
+
+//HANDLERS
+const handleSignupClose = () => {setSignupOpen(false)};
+const handleLoginClose = () => {setLoginOpen(false)};
+
 
   return (
     <>
@@ -53,7 +62,13 @@ const {cartItems, onAdd, onRemove, onDelete, onDeleteAll} = useBasket();
         </Route>
       </Switch>
       <Footer/>
-    </>
+      <AuthenticationModal 
+        signupOpen={signupOpen}
+        loginOpen={loginOpen}
+        handleLoginClose={handleLoginClose}
+        handleSignupClose={handleSignupClose}
+      />
+        </>
   );
 }
 
