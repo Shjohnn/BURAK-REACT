@@ -4,7 +4,7 @@ import { Messages } from "./config";
 
 export const sweetErrorHandling = async (err: any) => {
   const error = err.response?.data ?? err;
-  const message = error?.message ?? Messages.error6;
+  const message = error?.message ?? Messages.error1;
   await Swal.fire({
     icon: "error",
     text: message,
