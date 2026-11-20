@@ -9,4 +9,5 @@ export const Messages = {
     error3:"Please fill all the inputs!",
     error4:"Message is empty!",
     error5:"Only image with .png, .jpg, .jpeg,  formats are allowed!",
+    error6:'You are using already used phone number or nick, please use another one!',
 }
