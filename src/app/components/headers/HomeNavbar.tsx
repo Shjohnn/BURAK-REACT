@@ -2,9 +2,19 @@ import { Box, Button, Container, Stack } from "@mui/material";
 import { NavLink } from "react-router-dom";
 import Basket from "./Basket";
 import React, {useEffect, useState} from "react";
+import { CartItem } from "../../../lib/types/search";
 
-export  default function HomeNavbar() {
+interface HomeNavbarProps {
+  cartItems:CartItem[];
+  onAdd: (item: CartItem) =>void;
+  onRemove: (item: CartItem) =>void;
+  onDelete: (item: CartItem) =>void;
+  onDeleteAll: () =>void;
+}
+
+export  default function HomeNavbar(props: HomeNavbarProps) {
   const authMember = null;
+  const {cartItems, onAdd, onRemove, onDelete, onDeleteAll} = props;
 
 
   const [count, setCount] = useState<number>(0); //hotira, render bolganda 
@@ -55,7 +65,12 @@ export  default function HomeNavbar() {
               <NavLink to="/help" activeClassName={"underline"}>Help</NavLink>
             </Box>
             {/* Basket */}
-            <Basket/>
+            <Basket
+            cartItems={cartItems}
+              onAdd={onAdd}
+              onRemove={onRemove}
+              onDelete={onDelete}
+              onDeleteAll={onDeleteAll}/>
         
             {!authMember ? (
               <Box>
