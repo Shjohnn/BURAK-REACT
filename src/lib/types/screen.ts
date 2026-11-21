@@ -3,7 +3,7 @@ import { Member } from "./member";
 
 export interface AppRootState { //app ni state sini yaratib oldik
     homePage: HomePageState; //home page dagi 3ta malumotlarni saqlash uchun state yaratib oldik
-    productPage: ProductPageState; 
+    productPage: ProductsPageState; 
     //ordersPage: OrdersPageState; yaratamiz
 }
 

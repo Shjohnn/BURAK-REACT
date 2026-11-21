@@ -67,13 +67,21 @@ const handlePassword = (e: T) => {
   setMemberPassword(e.target.value);
 }
 
-const handlePasswordKeyDown = (e:T) => {
- if (e.key === "Enter") {
-  handleSignupRequest().then();
- } else if(e.key ==="Enter" && loginOpen) {
-handleLoginRequest().then();
-}
-}
+// const handlePasswordKeyDown = (e:T) => {
+//  if (e.key === "Enter") {
+//   handleSignupRequest().then();
+//  } else if(e.key ==="Enter" && loginOpen) {
+// handleLoginRequest().then();
+// }
+// }
+
+const handlePasswordKeyDown = (e: T) => {
+    if (e.key === "Enter" && signupOpen) {
+      handleSignupRequest().then();
+    } else if (e.key === "Enter" && loginOpen) {
+      handleLoginRequest().then();
+    }
+  };
 
 const handleSignupRequest = async () => {
   try {
