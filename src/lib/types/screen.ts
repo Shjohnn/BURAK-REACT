@@ -1,10 +1,11 @@
 import { Product  } from "./product";
 import { Member } from "./member";
+import { Order } from "./order";
 
 export interface AppRootState { //app ni state sini yaratib oldik
     homePage: HomePageState; //home page dagi 3ta malumotlarni saqlash uchun state yaratib oldik
     productPage: ProductsPageState; 
-    //ordersPage: OrdersPageState; yaratamiz
+    ordersPage: OrdersPageState; 
 }
 
 
@@ -25,5 +26,10 @@ export interface ProductsPageState {
 
 /**ORDERS PAGE STATE */
 
+export interface OrdersPageState {
+    pausedOrders: Order[];
+    processOrders: Order[] ;
+    finishedOrders: Order[] ;
+}
 
 //bu fayl vazifasi ts ga omborda nima bor deb aytib beradi. yani state ni type sini belgilaydi.
