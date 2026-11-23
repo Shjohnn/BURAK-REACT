@@ -57,7 +57,7 @@ class OrderService {
   public async updateOrder(input: OrderUpdateInput): Promise<Order> {
     try {
       const url = `${this.path}/order/update`;
-      const result = await axios.post(url, input, { withCredentials: true });
+      const result = await axios.post(url, input, { withCredentials: true });// 3ta value berilyabdi:
       console.log("updateOrder:", result);
 
       return result.data;

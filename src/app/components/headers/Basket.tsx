@@ -26,7 +26,7 @@ interface BasketProps {
 export default function Basket(props: BasketProps) {
   const history = useHistory();
   const { cartItems , onAdd, onRemove, onDelete, onDeleteAll} = props;
-  const { authMember } = useGlobals();
+  const { authMember , setOrderBuilder } = useGlobals();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const itemsPrice: number = cartItems.reduce((a: number, c: CartItem) => a + c.price * c.quantity, 0);
@@ -49,6 +49,7 @@ export default function Basket(props: BasketProps) {
     await order.createOrder(cartItems);
     onDeleteAll();
     //refresh via context, so that basket icon will be updated
+    setOrderBuilder(new Date())
     history.push("/orders");
   }catch(err){
     console.log(err);
