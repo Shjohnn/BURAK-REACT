@@ -8,8 +8,11 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import { useHistory } from "react-router-dom";
 import { CartItem } from "../../../lib/types/search";
-import { serverAPI } from "../../../lib/config";
+import { Messages, serverAPI } from "../../../lib/config";
 import { DeleteForever } from "@mui/icons-material";
+import { sweetErrorHandling } from "../../../lib/sweetAlert";
+import { useGlobals } from "../../hooks/useGlobals";
+import OrderService from "../../services/OrderService";
 
 interface BasketProps {
   cartItems: CartItem []
@@ -21,10 +24,9 @@ interface BasketProps {
 }
 
 export default function Basket(props: BasketProps) {
-  const authMember = null;
   const history = useHistory();
   const { cartItems , onAdd, onRemove, onDelete, onDeleteAll} = props;
-
+  const { authMember } = useGlobals();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const itemsPrice: number = cartItems.reduce((a: number, c: CartItem) => a + c.price * c.quantity, 0);
@@ -38,6 +40,21 @@ export default function Basket(props: BasketProps) {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const proceedOrderHandler =async () => {
+  try{
+    if(!authMember) throw new Error(Messages.error2);
+
+    const order = new OrderService();
+    await order.createOrder(cartItems);
+    onDeleteAll();
+    //refresh via context, so that basket icon will be updated
+    history.push("/orders");
+  }catch(err){
+    console.log(err);
+    sweetErrorHandling("Error processing order");
+  }
+}
 
   return (
     <Box className={"hover-line"}>
@@ -136,7 +153,9 @@ export default function Basket(props: BasketProps) {
               ${totalPrice} 
               ({itemsPrice} 
               +{shippingCost})</span>
-            <Button startIcon={<ShoppingCartIcon />} variant={"contained"}>
+            <Button 
+            onClick={proceedOrderHandler}
+            startIcon={<ShoppingCartIcon />} variant={"contained"}>
               Order
             </Button>
           </Box>) : null}

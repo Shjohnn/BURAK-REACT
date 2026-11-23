@@ -5,7 +5,12 @@ import { GlobalContext } from "../hooks/useGlobals";
 
 const ContextProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     const cookies = new Cookies();
+    //cookie check, if no cookie, remove localStorage memberData
+    //chunki vaqti tugasa ham cookie qoladi, lekin localStorage dan 
+    // memberData o'chiriladi, shuning uchun cookie bo'lmasa localStorage dan 
+    // memberData o'chiriladi
     if (!cookies.get("accessToken")) localStorage.removeItem("memberData");
+    
     
     const [authMember, setAuthMember] = useState<Member | null>( 
         localStorage.getItem("memberData")

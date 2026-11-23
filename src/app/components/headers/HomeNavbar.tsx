@@ -103,7 +103,7 @@ export  default function HomeNavbar(props: HomeNavbarProps) {
             <Menu
 anchorEl={anchorEl}
 	id="account-menu"
-  open={Boolean(anchorEl)}
+  open={Boolean(anchorEl)}//
   onClick={handleCloseLogout}
   onAbort={handleCloseLogout}
 	PaperProps={{

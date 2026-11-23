@@ -35,6 +35,7 @@ const [loginOpen, setLoginOpen] = useState<boolean>(false);
 const handleSignupClose = () => {setSignupOpen(false)};
 const handleLoginClose = () => {setLoginOpen(false)};
 const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+
 const handleLogoutClick = (e: React.MouseEvent<HTMLElement>) => {
   setAnchorEl(e.currentTarget);
 };
