@@ -50,7 +50,7 @@ export default function Basket(props: BasketProps) {
     onDeleteAll();
     //refresh via context, so that basket icon will be updated
     setOrderBuilder(new Date())
-    history.push("/orders");
+    history.push("/orders");//eski pagega qayradi
   }catch(err){
     console.log(err);
     sweetErrorHandling("Error processing order");
